@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="style/admin_panel.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>BlackBoard - Админ панель</h1>
+        </header>
+
+        <div class="admin-container">
+            <!-- Форма добавления нового блока -->
+            <div class="add-block-form">
+                <h2>Добавить новый тест</h2>
+                <form @submit.prevent="addNewBlock">
+                    <input v-model="newBlock.title" type="text" placeholder="Название предмета" required>
+                    <input v-model="newBlock.description" type="text" placeholder="Описание" required>
+                    <input v-model="newBlock.imageUrl" type="text" placeholder="URL изображения" required>
+                    <input v-model="newBlock.link" type="text" placeholder="Ссылка на страницу темы" required>
+                    <button type="submit">Добавить блок</button>
+                </form>
+            </div>
+
+            <!-- Список существующих блоков -->
+            <div class="blocks-list">
+                <h2>Существующие блоки</h2>
+                <div class="blocks-grid">
+                    <div v-for="(block, index) in blocks" :key="index" class="block-item">
+                        <img :src="block.imageUrl" :alt="block.title">
+                        <h3>{{ block.title }}</h3>
+                        <p>{{ block.description }}</p>
+                        <div class="block-actions">
+                            <button @click="editBlock(index)">Редактировать</button>
+                            <button @click="deleteBlock(index)" class="delete-btn">Удалить</button>
+                            <a :href="block.link" class="view-btn">Просмотр страницы</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="admin_panel.html"></script>
+</body>
+</html>
