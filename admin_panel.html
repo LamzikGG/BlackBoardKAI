@@ -20,8 +20,8 @@
                 <form @submit.prevent="addNewBlock">
                     <input v-model="newBlock.title" type="text" placeholder="Название предмета" required>
                     <input v-model="newBlock.description" type="text" placeholder="Описание" required>
-                    <input v-model="newBlock.imageUrl" type="text" placeholder="URL изображения" required>
-                    <input v-model="newBlock.link" type="text" placeholder="Ссылка на страницу темы" required>
+                    <input v-model="newBlock.imageUrl" type="text" placeholder="Изображение для данного предмета" required>
+                  <!--  <input v-model="newBlock.link" type="text" placeholder="Ссылка на страницу темы" required>-->
                     <button type="submit">Добавить блок</button>
                 </form>
             </div>
